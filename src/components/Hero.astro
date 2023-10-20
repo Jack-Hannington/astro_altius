@@ -1,0 +1,27 @@
+---
+
+interface Props {
+    title: string,
+    gobble: string
+}
+
+const heroTitle = 'Hannington Digital';
+
+
+// Props can be anything you define
+const { title, gobble } = Astro.props;
+
+---
+<div class="hero">
+<h1>{heroTitle}</h1>
+<p>{title}</p>
+<p>{gobble}</p>
+<p>The length of the title is {heroTitle.length} </p>
+</div>
+
+<style>
+.hero {
+    color:white;
+}
+
+</style>
