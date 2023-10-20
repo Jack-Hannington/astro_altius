@@ -1,14 +1,24 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import Hero from '../components/Hero.astro';
+import { Image } from 'astro:assets';
+// Importing images
+import logo from '../images/logo.jpeg';
+import contentImage from '../images/content.jpg';
+import dogImage from '../images/dog.jpg';
+import runnerImage from '../images/runner.png';
+
 // Fetch the list of posts
 const res = await fetch("https://altiushealthcare.co.uk/wp-json/wp/v2/posts?_fields=slug,title&per_page=100");
 const posts = await res.json();
+
 ---
 
 <Layout title="Post Index">
 	<h1>Post Index</h1>
+	<Image class="responsive-image" src={logo} alt="A logo." width="2000" height="1000"/>
+	<Image class="responsive-image" src={contentImage} alt="A content." width="2000" height="1000"/>
+	<Image class="responsive-image" src={dogImage} alt="A dog." width="2000" height="1000"/>
+	<Image class="responsive-image" src={runnerImage} alt="A runner." width="2000" height="1000"/>
 	<ul>
 	  {posts.map(post => (
 		<li>
@@ -16,7 +26,7 @@ const posts = await res.json();
 		</li>
 	  ))}
 	</ul>
-  </Layout>
+</Layout>
 
 <style>
 	main {
@@ -75,4 +85,9 @@ const posts = await res.json();
 		gap: 2rem;
 		padding: 0;
 	}
+	.responsive-image {
+  		max-width: 100%;
+  		height: auto;
+	}
+
 </style>
